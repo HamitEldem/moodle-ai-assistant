@@ -24,10 +24,10 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, onClick }) => {
               <BookOpen className="w-6 h-6 text-electric-400" />
             </div>
             <div className="min-w-0 flex-1">
-              <h3 className="text-lg font-semibold text-white truncate">
+              <h3 className="text-lg font-semibold text-white truncate" title={course.fullname}>
                 {course.fullname}
               </h3>
-              <p className="text-sm text-gray-400">
+              <p className="text-sm text-gray-400 truncate" title={course.shortname}>
                 {course.shortname}
               </p>
             </div>
@@ -37,7 +37,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, onClick }) => {
         
         {/* Description */}
         {course.summary && (
-          <div className="text-sm text-gray-300">
+          <div className="text-sm text-gray-300 line-clamp-3" title={course.summary.replace(/<[^>]*>/g, '')}>
             {truncateText(course.summary.replace(/<[^>]*>/g, ''), 120)}
           </div>
         )}

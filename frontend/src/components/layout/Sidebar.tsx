@@ -47,10 +47,10 @@ const Sidebar: React.FC = () => {
                 <User className="w-4 h-4 text-electric-400" />
               </div>
               <div className="min-w-0 flex-1">
-                <p className="text-sm font-medium text-white truncate">
+                <p className="text-sm font-medium text-white truncate" title={user.fullname || user.username}>
                   {user.fullname || user.username}
                 </p>
-                <p className="text-xs text-gray-400 truncate">
+                <p className="text-xs text-gray-400 truncate" title={user.sitename || 'Moodle User'}>
                   {user.sitename || 'Moodle User'}
                 </p>
               </div>
@@ -88,8 +88,14 @@ const Sidebar: React.FC = () => {
       <div className="p-4 border-t border-dark-700/50">
         <Button
           variant="ghost"
-          onClick={logout}
-          className="w-full justify-start"
+          onClick={() => {
+            logout()
+            // Force redirect to login after logout
+            setTimeout(() => {
+              window.location.href = '/';
+            }, 100);
+          }}
+          className="w-full justify-start hover:bg-red-500/10 hover:text-red-400 transition-colors"
         >
           <LogOut className="w-5 h-5 mr-3" />
           Logout
