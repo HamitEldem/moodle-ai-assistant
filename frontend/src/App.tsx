@@ -9,7 +9,10 @@ import Courses from '@/pages/Courses'
 import Chat from '@/pages/Chat'
 
 const App: React.FC = () => {
-  const { isAuthenticated, isValidating } = useAuth()
+  const { isAuthenticated, isValidating, user } = useAuth()
+  
+  // Debug logs
+  console.log('App render - isAuthenticated:', isAuthenticated, 'user:', user, 'isValidating:', isValidating)
   
   // Show loading spinner while validating session
   if (isValidating) {

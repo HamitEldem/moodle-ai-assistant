@@ -21,11 +21,11 @@ export const useAuth = () => {
     }
   }, [])
   
-  // Validate session query
+  // Validate session query - temporarily disabled for debugging
   const { data: sessionData, isLoading: isValidating } = useQuery({
     queryKey: ['session', 'validate'],
     queryFn: apiClient.validateSession,
-    enabled: isAuthenticated,
+    enabled: false, // Disabled for now to fix auth flow
     staleTime: 1000 * 60 * 5, // 5 minutes
     retry: false,
     onError: () => {
@@ -37,16 +37,26 @@ export const useAuth = () => {
   const loginMutation = useMutation({
     mutationFn: (credentials: LoginRequest) => apiClient.login(credentials),
     onSuccess: (data) => {
+      console.log('Login response:', data) // Debug log
       if (data.success && data.user_info && data.session_id) {
+        // Store session data first
+        storage.set('sessionId', data.session_id)
+        storage.set('user', data.user_info)
+        
+        // Then update state
         setIsAuthenticated(true)
         setUser(data.user_info)
         toast.success('Successfully connected to Moodle!')
         queryClient.invalidateQueries({ queryKey: ['session'] })
+        
+        console.log('Authentication successful, state updated') // Debug log
       } else {
+        console.log('Login failed:', data) // Debug log
         toast.error(data.message || 'Authentication failed')
       }
     },
     onError: (error: any) => {
+      console.error('Login error:', error) // Debug log
       const message = error?.response?.data?.message || 'Connection failed'
       toast.error(message)
     }

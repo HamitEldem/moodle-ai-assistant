@@ -45,7 +45,9 @@ const LoginForm: React.FC = () => {
         password: data.password
       }
       
-      await login(credentials)
+      console.log('Submitting login with credentials:', credentials)
+      const result = await login(credentials)
+      console.log('Login result:', result)
     } catch (error) {
       console.error('Login failed:', error)
     }
