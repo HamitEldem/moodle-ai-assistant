@@ -425,17 +425,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ---
 
-## 🙏 Acknowledgments
 
-**Special Thanks To:**
-- The Moodle community for excellent API documentation
-- FastAPI and React communities for outstanding frameworks
-- All beta testers and early adopters
-- Contributors who helped shape this project
-
-**Built With Love By:**
-- **Hamit Eldem** - Project Lead & Full-Stack Developer
-- **Contributors** - Community developers and supporters
 
 ---
 
@@ -461,6 +451,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 [⬆ Back to Top](#-moodle-ai-assistant)
 
-Made with ❤️ and cutting-edge technology
+Made with ❤️ 
 
 </div>
