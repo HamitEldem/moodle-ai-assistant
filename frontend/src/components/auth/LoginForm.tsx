@@ -6,7 +6,6 @@ import { Card, Button, Input } from '@/components/ui'
 import { useAuth } from '@/hooks/useAuth'
 import { LoginRequest } from '@/types'
 import { normalizeMoodleUrl, isValidUrl } from '@/utils'
-import TestLogin from '@/components/common/TestLogin'
 
 interface LoginFormData {
   moodle_url: string
@@ -194,9 +193,6 @@ const LoginForm: React.FC = () => {
           <p className="text-xs text-gray-500">
             Your credentials are never stored and only used to authenticate with your Moodle instance.
           </p>
-          
-          {/* Test Login Component */}
-          <TestLogin />
         </motion.div>
       </div>
     </div>
