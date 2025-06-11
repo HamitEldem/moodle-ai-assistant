@@ -15,7 +15,10 @@ export const useAuth = () => {
     const sessionId = storage.get<string>('sessionId')
     const savedUser = storage.get<UserInfo>('user')
     
+    console.log('useAuth mount - sessionId:', sessionId, 'savedUser:', savedUser)
+    
     if (sessionId && savedUser) {
+      console.log('Setting authenticated state from storage')
       setIsAuthenticated(true)
       setUser(savedUser)
     }
